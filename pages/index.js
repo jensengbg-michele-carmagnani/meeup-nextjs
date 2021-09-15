@@ -1,6 +1,6 @@
 import { Fragment } from "react";
-import { MongoClient } from "mongodb";
 import Head from "next/head";
+import { MongoClient } from "mongodb";
 import MeetupList from "../components/meetups/MeetupList";
 
 // const DUMMY_MEETUPS = [
@@ -21,7 +21,7 @@ import MeetupList from "../components/meetups/MeetupList";
 
 function HomePage(props) {
   return (
-    <>
+    
       <Fragment>
         <Head>
           <title>Meetups</title>
@@ -32,7 +32,7 @@ function HomePage(props) {
         </Head>
         <MeetupList meetups={props.meetups} />
       </Fragment>
-    </>
+  
   );
 }
 
