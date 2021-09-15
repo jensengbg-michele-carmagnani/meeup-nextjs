@@ -1,6 +1,7 @@
+import { Fragment } from "react";
 import { MongoClient } from "mongodb";
+import Head from "next/head";
 import MeetupList from "../components/meetups/MeetupList";
-
 
 // const DUMMY_MEETUPS = [
 //   {
@@ -21,7 +22,16 @@ import MeetupList from "../components/meetups/MeetupList";
 function HomePage(props) {
   return (
     <>
-      <MeetupList meetups={props.meetups} />
+      <Fragment>
+        <Head>
+          <title>Meetups</title>
+          <meta
+            name="description"
+            content="Browse a huge list of highly active React meetups"
+          ></meta>
+        </Head>
+        <MeetupList meetups={props.meetups} />
+      </Fragment>
     </>
   );
 }
@@ -37,11 +47,11 @@ export async function getStaticProps() {
 
   return {
     props: {
-      meetups: meetups.map(meetup => ({
+      meetups: meetups.map((meetup) => ({
         title: meetup.title,
         address: meetup.address,
         image: meetup.image,
-        id:meetup._id.toString()
+        id: meetup._id.toString(),
       })),
     },
     revalidate: 1,
